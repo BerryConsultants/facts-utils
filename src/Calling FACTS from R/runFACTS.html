@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Run FACTS MCMC Model from R</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for runFACTS"><tr><td>runFACTS</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Run FACTS MCMC Model from R</h2>
+
+<h3>Usage</h3>
+
+<pre>
+runFACTS(engine = c("contin","dichot","ME","TTE","ed_contin","ed_dichot","ed_tte"),
+                    data.file = "patients.dat",
+                    param.file = "nuk1_e.param",
+                    mcmc.file.num = 0,
+                    rng.seed,
+                    exec.path = getwd())
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>engine</code></td>
+<td>
+
+<p>Name of the FACTS engine to use. Can be one of &quot;contin&quot;,&quot;dichot&quot;,&quot;ME&quot;,&quot;TTE&quot; for the Core engines, or &quot;ed_contin&quot;, &quot;ed_dichot&quot;,&quot;ed_tte&quot; for the Enrichment Design engines.
+</p>
+</td></tr>
+<tr valign="top"><td><code>data.file</code></td>
+<td>
+
+<p>Name of the input data file. Default is 'patients.dat'. This file format should be exactly match the file format of the 'patients' file corresponding to the ones produced by FACTS for the design you set up in FACTS to specify the analysis model. (See the FACTS Execution Guides under the FACTS Help menu for details.)
+</p>
+</td></tr>
+<tr valign="top"><td><code>param.file</code></td>
+<td>
+
+<p>Name of the FACTS '.param' file that specifies the model setup. Default is 'nuk1_e.param'.
+</p>
+</td></tr>
+<tr valign="top"><td><code>mcmc.file.num</code></td>
+<td>
+
+<p>The MCMC output is written to a file named mcmcNNNNN.csv. This argument sets the NNNNN. So <code>mcmc.file.num</code>=1 will create an MCMC output file called mcmc00001.csv. Default value is 0.
+</p>
+</td></tr>
+<tr valign="top"><td><code>rng.seed</code></td>
+<td>
+
+<p>Integer-valued random number generator seed. Will use the value from the '.param' file if unspecified.
+</p>
+</td></tr>
+<tr valign="top"><td><code>exec.path</code></td>
+<td>
+
+<p>The path to the directory where the FACTS executable program is available. Default is the current working directory.
+</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The function <code>runFACTS</code> provides the funtionality to run a FACTS analysis with a user-provided dataset. In order to use this, a corresponding FACTS project must be set up to generate the '.param' file.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R valueblock">
+<tr valign="top"><td><code>status</code></td>
+<td>
+<p>The function returns a TRUE/FALSE to indicate a successful/failed execution. In case of errors, R error messages may be printed, and in case of a FACTS execution error, a file called 'error.txt' with the error description will be output.</p>
+</td></tr>
+<tr valign="top"><td><code>mcmcNNNNN.csv</code></td>
+<td>
+<p>A file with the MCMC output. (See FACTS documentation for details.)</p>
+</td></tr>
+</table>
+
+
+</body></html>
